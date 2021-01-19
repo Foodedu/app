@@ -63,9 +63,9 @@ flutter:
   fonts:
     - family: AvenirNextLTPro
       fonts:
-        - asset: assets/fonts/AvenirNextLTPro-Demi.ttf
-          weight: 500
         - asset: assets/fonts/AvenirNextLTPro-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/AvenirNextLTPro-Demi.ttf
           weight: 600
         - asset: assets/fonts/AvenirNextLTPro-Medium.ttf
           weight: 700
