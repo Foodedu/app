@@ -1,17 +1,52 @@
 import 'package:flutter/material.dart';
 
 class AppFont {
-  static const kRegularTextStyle = TextStyle(
-    color: Color.fromRGBO(51, 51, 51, 1),
+  static const largeTitle = TextStyle(
     fontFamily: "AvenirNextLTPro",
-    fontSize: 17.0,
+    fontSize: 40.0,
+    fontWeight: FontWeight.w700,
+    height: 1.2,
+  );
+
+  static const title1 = TextStyle(
+    fontFamily: "AvenirNextLTPro",
+    fontSize: 27.0,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const title2 = TextStyle(
+    fontFamily: "AvenirNextLTPro",
+    fontSize: 20.0,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const headline1 = TextStyle(
+    fontFamily: "AvenirNextLTPro",
+    fontSize: 20.0,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const headline2 = TextStyle(
+    fontFamily: "AvenirNextLTPro",
+    fontSize: 16.0,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const body1 = TextStyle(
+    fontFamily: "AvenirNextLTPro",
+    fontSize: 16.0,
     fontWeight: FontWeight.w500,
   );
 
-  static const kSemiBoldTextStyle = TextStyle(
-    color: Color.fromRGBO(51, 51, 51, 1),
+  static const body2 = TextStyle(
     fontFamily: "AvenirNextLTPro",
-    fontSize: 17.0,
-    fontWeight: FontWeight.w600,
+    fontSize: 15.0,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const caption1 = TextStyle(
+    fontFamily: "AvenirNextLTPro",
+    fontSize: 12.0,
+    fontWeight: FontWeight.w700,
   );
 }

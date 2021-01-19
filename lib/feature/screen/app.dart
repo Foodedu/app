@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/general/contanst/app_font.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -45,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               FlatButton(
                 onPressed: () {},
-                child: Text('Login Screen'),
+                child: Text('Login Screen', style: AppFont.title1,),
               ),
               FlatButton(
                 onPressed: () {},
