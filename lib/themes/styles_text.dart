@@ -17,10 +17,10 @@ class StylesText {
   );
 
   static const title2 = TextStyle(
-    fontSize: 20,
-    fontFamily: FontFamily.appFont,
-    fontWeight: FontWeight.w600,
-  );
+      fontSize: 20,
+      fontFamily: FontFamily.appFont,
+      fontWeight: FontWeight.w600,
+      color: Colors.black);
   static const h1 = TextStyle(
     fontSize: 20,
     fontFamily: FontFamily.appFont,

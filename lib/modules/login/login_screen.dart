@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food/common/widgets/app_bar_widget.dart';
 import '../../data/repository/authen_repository.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
@@ -19,6 +20,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) => KeyboardDismisser(
           child: Scaffold(
+        appBar: AppBarWidget(
+          title: 'Log in',
+          isShowBack: true,
+        ),
         body: SafeArea(
           child: Container(
             padding: const EdgeInsets.all(12),
@@ -29,15 +34,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       RepositoryProvider.of<AuthenticationRepository>(context),
                 );
               },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text('Đăng nhập'),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  LoginForm(),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text('Đăng nhập'),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    LoginForm(),
+                  ],
+                ),
               ),
             ),
           ),

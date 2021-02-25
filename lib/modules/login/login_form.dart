@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food/common/widgets/password_text_form_field_widget.dart';
+import 'package:food/common/widgets/text_form_field_widget.dart';
+import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 import '../../common/widgets/utils.dart';
 import '../../data/repository/authen_repository.dart';
@@ -47,65 +50,64 @@ class _LoginFormState extends State<LoginForm> {
           UtilWidget.showLoading();
         }
       },
-      child: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _usernameField(),
-            SizedBox(
-              height: 8,
-            ),
-            _passwordField(),
-            SizedBox(
-              height: 32,
-            ),
-            OutlineButton(
-              onPressed: _onSubmitted,
-              child: Text(
-                'Đăng nhập',
-                style: StylesText.body1,
+      child: KeyboardDismisser(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormFieldWidget(
+                controller: _usernameTextController,
+                focusNode: _usernameFocus,
+                textInputAction: TextInputAction.next,
+                hint: 'username',
+                label: 'username',
+                validator: (value) {
+                  return Validators.validateNotNullOrEmpty(
+                    value,
+                    'username is empty',
+                  );
+                },
+                onFieldSubmitted: (value) {
+                  _usernameFocus.unfocus();
+                  FocusScope.of(context).requestFocus(_passwordFocus);
+                },
               ),
-            )
-          ],
+              SizedBox(
+                height: 8,
+              ),
+              PasswordFormFieldWidget(
+                controller: _passwordTextController,
+                focusNode: _passwordFocus,
+                hint: 'password',
+                label: 'password',
+                validator: (value) {
+                  return Validators.validateNotNullOrEmpty(
+                    value,
+                    'Password is empty',
+                  );
+                },
+                onFieldSubmitted: (value) {
+                  _passwordFocus.unfocus();
+                  _onSubmitted();
+                },
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              OutlineButton(
+                onPressed: _onSubmitted,
+                child: Text(
+                  'Đăng nhập',
+                  style: StylesText.body1,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
-  }
-
-  Widget _usernameField() {
-    return TextFormField(
-      decoration: InputDecoration(hintText: 'username'),
-      keyboardType: TextInputType.text,
-      controller: _usernameTextController,
-      textInputAction: TextInputAction.next,
-      focusNode: _usernameFocus,
-      validator: (_) {
-        return Validators.validateNotNullOrEmpty(
-            _usernameTextController.text, 'Vui lòng nhập email');
-      },
-      onFieldSubmitted: (_) {
-        _usernameFocus.unfocus();
-        FocusScope.of(context).requestFocus(_passwordFocus);
-      },
-    );
-  }
-
-  Widget _passwordField() {
-    return TextFormField(
-        decoration: InputDecoration(hintText: 'Mật khẩu'),
-        controller: _passwordTextController,
-        focusNode: _passwordFocus,
-        validator: (_) {
-          return Validators.validateNotNullOrEmpty(
-              _passwordTextController.text, 'Vui lòng nhập mật khẩu');
-        },
-        onFieldSubmitted: (_) {
-          _passwordFocus.unfocus();
-          _onSubmitted();
-        },
-        obscureText: true);
   }
 
   void _onSubmitted() async {
@@ -115,10 +117,15 @@ class _LoginFormState extends State<LoginForm> {
       if (!currentFocus.hasPrimaryFocus) {
         currentFocus.unfocus();
       }
-      BlocProvider.of<LoginBloc>(context).add(LoginSubmitted(
-          username: _usernameTextController.text,
-          password: _passwordTextController.text));
+      try {
+        BlocProvider.of<LoginBloc>(context).add(LoginSubmitted(
+            username: _usernameTextController.text,
+            password: _passwordTextController.text));
+      } catch (e) {
+        print(e);
+      }
     } else {
+      print('dd');
       //
     }
   }
