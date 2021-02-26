@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/themes/app_colors.dart';
 
 enum TextFieldStatus { normal, valid, invalid }
 
@@ -28,7 +29,7 @@ class TextFormFieldWidget extends StatefulWidget {
 
 class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   TextFieldStatus status = TextFieldStatus.normal;
-  Color _borderColor = Colors.grey;
+  Color _borderColor = AppColors.neutral4;
   Widget _suffixIcon = SizedBox();
   Widget _errorMessageWidget = SizedBox();
   String _errorMessage = '';
@@ -51,11 +52,11 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
     return Theme(
       data: Theme.of(context).copyWith(
         inputDecorationTheme: _isChangeLabelColor
-            ? const InputDecorationTheme(
-                labelStyle: TextStyle(color: Colors.blue),
+            ? InputDecorationTheme(
+                labelStyle: TextStyle(color: AppColors.neutral2),
               )
-            : const InputDecorationTheme(
-                labelStyle: TextStyle(color: Colors.grey),
+            : InputDecorationTheme(
+                labelStyle: TextStyle(color: AppColors.neutral4),
               ),
       ),
       child: Column(
@@ -108,26 +109,26 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   void updateTextFormFieldState(TextFieldStatus status) {
     switch (status) {
       case TextFieldStatus.valid:
-        _borderColor = Colors.green;
+        _borderColor = AppColors.semantic1;
         _suffixIcon = Icon(Icons.check);
         _errorMessageWidget = SizedBox();
         break;
       case TextFieldStatus.invalid:
-        _borderColor = Colors.red;
+        _borderColor = AppColors.semantic2;
         _suffixIcon = Icon(
           Icons.close,
-          color: Colors.red,
+          color: AppColors.semantic2,
         );
         _errorMessageWidget = Padding(
           padding: const EdgeInsets.only(left: 8.0, right: 8),
           child: Text(
             _errorMessage ?? '',
-            style: TextStyle(color: Colors.red),
+            style: TextStyle(color: AppColors.semantic2),
           ),
         );
         break;
       default:
-        _borderColor = Colors.grey;
+        _borderColor = AppColors.neutral4;
         _suffixIcon = SizedBox();
         _errorMessageWidget = SizedBox();
     }

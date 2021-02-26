@@ -33,11 +33,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async* {
     yield state.copyWith(status: LoginStatus.submissionInProgress);
     try {
-      var user = await _authenticationRepository.signInWithCredentials(
-        event.username,
-        event.password,
-      );
-      var token = user.token;
+      // var user = await _authenticationRepository.signInWithCredentials(
+      //   event.username,
+      //   event.password,
+      // );
+      // var token = user.token;
+      var token = 'token';
       await pref.saveString(PrefKey.token_key, token);
       await pref.saveBool(PrefKey.isLogged, true);
       var currentTime = DateTime.now().millisecondsSinceEpoch;

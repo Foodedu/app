@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/themes/app_colors.dart';
 
 enum PasswordTextFieldStatus { normal, showPassword, hidePassword, invalid }
 
@@ -29,7 +30,7 @@ class PasswordFormFieldWidget extends StatefulWidget {
 
 class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
   PasswordTextFieldStatus status = PasswordTextFieldStatus.normal;
-  Color _borderColor = Colors.grey;
+  Color _borderColor = AppColors.neutral4;
   Widget _suffixIcon = SizedBox();
   Widget _errorMessageWidget = SizedBox();
   String _errorMessage = '';
@@ -53,11 +54,11 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
     return Theme(
       data: Theme.of(context).copyWith(
         inputDecorationTheme: _isChangeLabelColor
-            ? const InputDecorationTheme(
-                labelStyle: TextStyle(color: Colors.blue),
+            ? InputDecorationTheme(
+                labelStyle: TextStyle(color: AppColors.neutral2),
               )
-            : const InputDecorationTheme(
-                labelStyle: TextStyle(color: Colors.grey),
+            : InputDecorationTheme(
+                labelStyle: TextStyle(color: AppColors.neutral4),
               ),
       ),
       child: Column(
@@ -111,11 +112,11 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
   void updateTextFormFieldState(PasswordTextFieldStatus status) {
     switch (status) {
       case PasswordTextFieldStatus.hidePassword:
-        _borderColor = Colors.grey;
+        _borderColor = AppColors.neutral4;
         _suffixIcon = IconButton(
             icon: Icon(
               Icons.visibility_off,
-              color: Colors.grey,
+              color: AppColors.neutral4,
             ),
             onPressed: () {
               setState(() {
@@ -126,11 +127,11 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
         _errorMessageWidget = SizedBox();
         break;
       case PasswordTextFieldStatus.showPassword:
-        _borderColor = Colors.grey;
+        _borderColor = AppColors.neutral4;
         _suffixIcon = IconButton(
             icon: Icon(
               Icons.visibility,
-              color: Colors.grey,
+              color: AppColors.neutral4,
             ),
             onPressed: () {
               setState(() {
@@ -141,21 +142,21 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
         _errorMessageWidget = SizedBox();
         break;
       case PasswordTextFieldStatus.invalid:
-        _borderColor = Colors.red;
+        _borderColor = AppColors.semantic2;
         _suffixIcon = Icon(
           Icons.close,
-          color: Colors.red,
+          color: AppColors.semantic2,
         );
         _errorMessageWidget = Padding(
           padding: const EdgeInsets.only(left: 8.0, right: 8),
           child: Text(
             _errorMessage ?? '',
-            style: TextStyle(color: Colors.red),
+            style: TextStyle(color: AppColors.semantic2),
           ),
         );
         break;
       default:
-        _borderColor = Colors.grey;
+        _borderColor = AppColors.neutral4;
         _suffixIcon = SizedBox();
         _errorMessageWidget = SizedBox();
     }
