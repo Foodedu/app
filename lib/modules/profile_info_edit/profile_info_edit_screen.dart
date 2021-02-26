@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/common/widgets/dropdown_widget.dart';
 import 'package:food/utils/helpers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
@@ -161,9 +162,8 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
             children: [
               Expanded(
                 flex: 3,
-                child: TextFormFieldWidget(
-                  controller: _genderCtl,
-                  hint: 'Gender',
+                child: DropdownWidget(
+                  items: ['Male', 'Female'],
                 ),
               ),
               SizedBox(
