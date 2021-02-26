@@ -34,19 +34,31 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
   Widget _errorMessageWidget = SizedBox();
   String _errorMessage = '';
   bool isHidePassword = true;
+  bool _isChangeLabelColor = false;
+  FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
+    _focusNode = widget.focusNode ?? FocusNode();
+    _focusNode.addListener(() {
+      setState(() {
+        _isChangeLabelColor = _focusNode.hasFocus ? true : false;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        inputDecorationTheme: const InputDecorationTheme(
-          labelStyle: TextStyle(color: Colors.grey),
-        ),
+        inputDecorationTheme: _isChangeLabelColor
+            ? const InputDecorationTheme(
+                labelStyle: TextStyle(color: Colors.blue),
+              )
+            : const InputDecorationTheme(
+                labelStyle: TextStyle(color: Colors.grey),
+              ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +71,7 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
             ),
             child: TextFormField(
               decoration: InputDecoration(
-                  errorStyle: TextStyle(height: 0),
+                  errorStyle: TextStyle(fontSize: 0, height: 0),
                   hintText: widget.hint,
                   labelText: widget.label,
                   suffixIcon: _suffixIcon,

@@ -69,7 +69,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
             ),
             child: TextFormField(
               decoration: InputDecoration(
-                  errorStyle: TextStyle(height: 0),
+                  errorStyle: TextStyle(fontSize: 0, height: 0),
                   hintText: widget.hint,
                   labelText: widget.label,
                   suffixIcon: _suffixIcon,

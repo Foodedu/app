@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/common/widgets/password_text_form_field_widget.dart';
+import 'package:food/common/widgets/primary_button_widget.dart';
+import 'package:food/common/widgets/ghost_button_widget.dart';
+import 'package:food/common/widgets/secondary_button_widget.dart';
 import 'package:food/common/widgets/text_form_field_widget.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
@@ -96,13 +99,10 @@ class _LoginFormState extends State<LoginForm> {
               SizedBox(
                 height: 32,
               ),
-              OutlineButton(
+              PrimaryButtonWidget(
+                title: 'Đăng nhập',
                 onPressed: _onSubmitted,
-                child: Text(
-                  'Đăng nhập',
-                  style: StylesText.body1,
-                ),
-              )
+              ),
             ],
           ),
         ),
