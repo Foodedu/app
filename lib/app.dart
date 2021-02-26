@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'themes/themes.dart';
 
 import 'data/repository/authen_repository.dart';
 import 'modules/account/setting_screen.dart';
-import 'modules/splash/splash.dart';
 import 'modules/authentication/bloc/authentication_bloc.dart';
 import 'modules/login/login_screen.dart';
+import 'modules/splash/splash.dart';
+import 'themes/themes.dart';
 import 'utils/pref.dart';
 
 class MyApp extends StatelessWidget {

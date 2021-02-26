@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food/themes/app_colors.dart';
+
+import '../../themes/app_colors.dart';
 
 enum PasswordTextFieldStatus { normal, showPassword, hidePassword, invalid }
 
@@ -8,14 +9,12 @@ class PasswordFormFieldWidget extends StatefulWidget {
   final Function(String) validator;
   final Function(String) onFieldSubmitted;
   final String hint;
-  final String label;
   final FocusNode focusNode;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   const PasswordFormFieldWidget({
     @required this.controller,
     @required this.hint,
-    @required this.label,
     this.validator,
     this.onFieldSubmitted,
     this.focusNode,
@@ -74,7 +73,7 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
               decoration: InputDecoration(
                   errorStyle: TextStyle(fontSize: 0, height: 0),
                   hintText: widget.hint,
-                  labelText: widget.label,
+                  labelText: widget.hint,
                   suffixIcon: _suffixIcon,
                   border: InputBorder.none),
               keyboardType: widget.keyboardType ?? TextInputType.text,

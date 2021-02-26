@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/common/widgets/password_text_form_field_widget.dart';
-import 'package:food/common/widgets/primary_button_widget.dart';
-import 'package:food/common/widgets/ghost_button_widget.dart';
-import 'package:food/common/widgets/secondary_button_widget.dart';
-import 'package:food/common/widgets/text_form_field_widget.dart';
+import 'package:food/utils/helpers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
+import '../../common/widgets/password_text_form_field_widget.dart';
+import '../../common/widgets/primary_button_widget.dart';
+import '../../common/widgets/text_form_field_widget.dart';
 import '../../common/widgets/utils.dart';
 import '../../data/repository/authen_repository.dart';
-import '../../themes/styles_text.dart';
 import '../../utils/validators.dart';
 import '../authentication/bloc/authentication_bloc.dart';
 import 'bloc/login_bloc.dart';
@@ -65,7 +63,6 @@ class _LoginFormState extends State<LoginForm> {
                 focusNode: _usernameFocus,
                 textInputAction: TextInputAction.next,
                 hint: 'username',
-                label: 'username',
                 validator: (value) {
                   return Validators.validateNotNullOrEmpty(
                     value,
@@ -84,7 +81,6 @@ class _LoginFormState extends State<LoginForm> {
                 controller: _passwordTextController,
                 focusNode: _passwordFocus,
                 hint: 'password',
-                label: 'password',
                 validator: (value) {
                   return Validators.validateNotNullOrEmpty(
                     value,
@@ -113,10 +109,7 @@ class _LoginFormState extends State<LoginForm> {
   void _onSubmitted() async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      var currentFocus = FocusScope.of(context);
-      if (!currentFocus.hasPrimaryFocus) {
-        currentFocus.unfocus();
-      }
+      Helpers.hideKeyboard(context);
       try {
         BlocProvider.of<LoginBloc>(context).add(LoginSubmitted(
             username: _usernameTextController.text,

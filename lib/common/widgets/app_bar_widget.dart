@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food/themes/styles_text.dart';
 import 'package:get/get.dart';
+
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
 
 class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -12,7 +14,7 @@ class AppBarWidget extends StatefulWidget implements PreferredSizeWidget {
   final void Function() onMainActionPressed;
   const AppBarWidget({
     this.title,
-    this.isShowBack = false,
+    this.isShowBack = true,
     this.onBackButtonPressed,
     this.isShowMainAction = false,
     this.iconBackButton,
@@ -35,7 +37,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
         centerTitle: true,
         title: Text(
           widget.title ?? '',
-          style: StylesText.title2,
+          style: StylesText.title2.copyWith(color: AppColors.neutral1),
         ),
         leading: widget.isShowBack
             ? IconButton(

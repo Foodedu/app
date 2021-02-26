@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../utils/app_images.dart';
+import 'package:get/get.dart';
 
+import '../../utils/app_images.dart';
 import '../../utils/pref.dart';
 import '../authentication/bloc/authentication_bloc.dart';
+import '../profile_info_edit/profile_info_edit_screen.dart';
 
 class AccountScreen extends StatefulWidget {
   static Route route() {
@@ -27,13 +29,17 @@ class _AccountScreenState extends State<AccountScreen> {
         child: Column(
           children: [
             Image.asset(AppImage.avatar),
-            Container(
-              child: OutlineButton(
-                onPressed: () {
-                  _clickSignOut();
-                },
-                child: Text('Đăng xuất'),
-              ),
+            OutlineButton(
+              onPressed: () {
+                Get.to(() => ProfileInfoEditScreen());
+              },
+              child: Text('Profile & Address edit'),
+            ),
+            OutlineButton(
+              onPressed: () {
+                _clickSignOut();
+              },
+              child: Text('Đăng xuất'),
             ),
           ],
         ),

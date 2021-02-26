@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/common/widgets/app_bar_widget.dart';
+import '../../common/widgets/app_bar_widget.dart';
 import '../../data/repository/authen_repository.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 

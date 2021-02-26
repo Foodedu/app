@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food/themes/app_colors.dart';
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
 
 enum TextFieldStatus { normal, valid, invalid }
 
@@ -8,14 +9,12 @@ class TextFormFieldWidget extends StatefulWidget {
   final Function(String) onFieldSubmitted;
   final Function(String) validator;
   final String hint;
-  final String label;
   final FocusNode focusNode;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   const TextFormFieldWidget({
     @required this.controller,
     @required this.hint,
-    @required this.label,
     this.validator,
     this.onFieldSubmitted,
     this.focusNode,
@@ -31,7 +30,6 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   TextFieldStatus status = TextFieldStatus.normal;
   Color _borderColor = AppColors.neutral4;
   Widget _suffixIcon = SizedBox();
-  Widget _errorMessageWidget = SizedBox();
   String _errorMessage = '';
   FocusNode _focusNode;
   bool _isChangeLabelColor = false;
@@ -72,9 +70,12 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
               decoration: InputDecoration(
                   errorStyle: TextStyle(fontSize: 0, height: 0),
                   hintText: widget.hint,
-                  labelText: widget.label,
+                  hintStyle:
+                      StylesText.body1.copyWith(color: AppColors.neutral2),
+                  labelText: widget.hint,
                   suffixIcon: _suffixIcon,
                   border: InputBorder.none),
+              style: StylesText.body1.copyWith(color: AppColors.neutral1),
               keyboardType: widget.keyboardType ?? TextInputType.text,
               textInputAction: widget.textInputAction ?? TextInputAction.done,
               controller: widget.controller,
@@ -87,13 +88,20 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
           SizedBox(
             height: 4,
           ),
-          _errorMessageWidget
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8),
+            child: Text(
+              _errorMessage ?? '',
+              style: TextStyle(color: AppColors.semantic2),
+            ),
+          )
         ],
       ),
     );
   }
 
   String onValidator(String value) {
+    if (widget.validator == null) return null;
     _errorMessage = widget.validator(value);
     if (_errorMessage != null) {
       status = TextFieldStatus.invalid;
@@ -111,7 +119,6 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
       case TextFieldStatus.valid:
         _borderColor = AppColors.semantic1;
         _suffixIcon = Icon(Icons.check);
-        _errorMessageWidget = SizedBox();
         break;
       case TextFieldStatus.invalid:
         _borderColor = AppColors.semantic2;
@@ -119,18 +126,10 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
           Icons.close,
           color: AppColors.semantic2,
         );
-        _errorMessageWidget = Padding(
-          padding: const EdgeInsets.only(left: 8.0, right: 8),
-          child: Text(
-            _errorMessage ?? '',
-            style: TextStyle(color: AppColors.semantic2),
-          ),
-        );
         break;
       default:
         _borderColor = AppColors.neutral4;
         _suffixIcon = SizedBox();
-        _errorMessageWidget = SizedBox();
     }
   }
 }
