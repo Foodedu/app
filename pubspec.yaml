@@ -25,6 +25,7 @@ dependencies:
   change_app_package_name: ^0.1.2
   package_info: ^0.4.3
   fluttertoast: ^7.1.8
+  image_picker: ^0.6.7+22
 
   cupertino_icons: ^1.0.1
 

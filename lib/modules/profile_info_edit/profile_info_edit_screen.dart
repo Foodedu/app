@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:food/common/widgets/dropdown_widget.dart';
+import 'package:food/utils/app_images.dart';
 import 'package:food/utils/helpers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
@@ -81,10 +83,31 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
             height: 16,
           ),
           Center(
-            child: CircleImageWidget(
-              url: 'https://placeimg.com/640/480/fashion',
-              size: 120,
-            ),
+            child: Stack(children: [
+              CircleImageWidget(
+                url: 'https://placeimg.com/640/480/fashion',
+                size: 120,
+              ),
+              Positioned(
+                bottom: 4,
+                right: 4,
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: 35,
+                    height: 35,
+                    padding: EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary1,
+                      borderRadius: BorderRadius.circular(35),
+                    ),
+                    child: SvgPicture.asset(
+                      AppIcon.icCameraPicker,
+                    ),
+                  ),
+                ),
+              )
+            ]),
           ),
           SizedBox(
             height: 32,
