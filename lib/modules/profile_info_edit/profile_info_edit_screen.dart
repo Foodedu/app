@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:food/common/widgets/dropdown_widget.dart';
-import 'package:food/utils/app_images.dart';
+import 'package:food/modules/profile_info_edit/widgets/avatar_profile_widget.dart';
 import 'package:food/utils/helpers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 import '../../common/widgets/app_bar_widget.dart';
-import '../../common/widgets/circle_image_widget.dart';
 import '../../common/widgets/primary_button_widget.dart';
 import '../../common/widgets/text_form_field_widget.dart';
 import '../../themes/app_colors.dart';
@@ -83,31 +81,11 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
             height: 16,
           ),
           Center(
-            child: Stack(children: [
-              CircleImageWidget(
-                url: 'https://placeimg.com/640/480/fashion',
-                size: 120,
-              ),
-              Positioned(
-                bottom: 4,
-                right: 4,
-                child: InkWell(
-                  onTap: () {},
-                  child: Container(
-                    width: 35,
-                    height: 35,
-                    padding: EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: AppColors.primary1,
-                      borderRadius: BorderRadius.circular(35),
-                    ),
-                    child: SvgPicture.asset(
-                      AppIcon.icCameraPicker,
-                    ),
-                  ),
-                ),
-              )
-            ]),
+            child: Container(
+              child: AvatarProfileWidget(),
+              width: 150,
+              height: 150,
+            ),
           ),
           SizedBox(
             height: 32,
