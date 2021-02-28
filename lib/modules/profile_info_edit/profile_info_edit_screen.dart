@@ -109,7 +109,7 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
                   hint: 'First Name',
                   validator: (value) {
                     return Validators.validateNotNullOrEmpty(
-                        value, 'First Name');
+                        value, 'First Name is empty');
                   },
                   onFieldSubmitted: (value) {
                     FocusScope.of(context).requestFocus(_lastNameFocus);
@@ -128,7 +128,7 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
                   hint: 'Last Name',
                   validator: (value) {
                     return Validators.validateNotNullOrEmpty(
-                        value, 'Last Name');
+                        value, 'Last Name is empty');
                   },
                   onFieldSubmitted: (value) {
                     FocusScope.of(context).requestFocus(_emailFocus);
@@ -147,9 +147,9 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
             focusNode: _emailFocus,
             hint: 'Email',
             validator: (value) {
-              return Validators.validateNotNullOrEmpty(
+              return Validators.validateEmail(
                 value,
-                'Email',
+                'Email is invalid',
               );
             },
             onFieldSubmitted: (value) {
@@ -178,7 +178,8 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
                   focusNode: _phoneFocus,
                   hint: 'Phone',
                   validator: (value) {
-                    return Validators.validateNotNullOrEmpty(value, 'Phone');
+                    return Validators.validatePhoneNumber(
+                        value, 'Phone number is invalid');
                   },
                 ),
               ),
