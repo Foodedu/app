@@ -83,8 +83,8 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
           Center(
             child: Container(
               child: AvatarProfileWidget(),
-              width: 150,
-              height: 150,
+              width: 120,
+              height: 120,
             ),
           ),
           SizedBox(

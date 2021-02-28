@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food/common/widgets/app_bar_widget.dart';
 import 'package:get/get.dart';
 
-import '../../utils/app_images.dart';
 import '../../utils/pref.dart';
 import '../authentication/bloc/authentication_bloc.dart';
 import '../profile_info_edit/profile_info_edit_screen.dart';
@@ -22,13 +22,14 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Account'),
+      appBar: AppBarWidget(
+        isShowBack: false,
+        title: 'Account',
       ),
       body: Center(
         child: Column(
           children: [
-            Image.asset(AppImage.avatar),
+            SizedBox(height: 20),
             OutlineButton(
               onPressed: () {
                 Get.to(() => ProfileInfoEditScreen());
@@ -39,7 +40,7 @@ class _AccountScreenState extends State<AccountScreen> {
               onPressed: () {
                 _clickSignOut();
               },
-              child: Text('Đăng xuất'),
+              child: Text('Log Out'),
             ),
           ],
         ),
