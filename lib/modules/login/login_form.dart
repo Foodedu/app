@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food/common/widgets/ghost_button_widget.dart';
+import 'package:food/common/widgets/social_button_widget.dart';
+import 'package:food/themes/app_colors.dart';
+import 'package:food/themes/styles_text.dart';
+import 'package:food/utils/app_images.dart';
 import 'package:food/utils/helpers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
@@ -62,11 +67,11 @@ class _LoginFormState extends State<LoginForm> {
                 controller: _usernameTextController,
                 focusNode: _usernameFocus,
                 textInputAction: TextInputAction.next,
-                hint: 'username',
+                hint: 'Email or Phone Number',
                 validator: (value) {
                   return Validators.validateNotNullOrEmpty(
                     value,
-                    'username is empty',
+                    'Email or Phone Number is empty',
                   );
                 },
                 onFieldSubmitted: (value) {
@@ -80,7 +85,7 @@ class _LoginFormState extends State<LoginForm> {
               PasswordFormFieldWidget(
                 controller: _passwordTextController,
                 focusNode: _passwordFocus,
-                hint: 'password',
+                hint: 'Password',
                 validator: (value) {
                   return Validators.validateNotNullOrEmpty(
                     value,
@@ -93,11 +98,48 @@ class _LoginFormState extends State<LoginForm> {
                 },
               ),
               SizedBox(
+                height: 16,
+              ),
+              GhostButtonWidget(
+                title: 'Forgot Password?',
+                color: AppColors.neutral1,
+                onPressed: () {},
+              ),
+              SizedBox(
                 height: 32,
               ),
               PrimaryButtonWidget(
                 title: 'Đăng nhập',
                 onPressed: _onSubmitted,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Text(
+                'OR',
+                style: StylesText.body2,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              SocialButtonWidget(
+                onPressed: () {
+                  print('Continute With Facebook');
+                },
+                title: 'Continute With Facebook',
+                backgroundColor: AppColors.facebookButton,
+                icon: AppIcon.icFacebook,
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              SocialButtonWidget(
+                onPressed: () {
+                  print('Continue With Google');
+                },
+                title: 'Continue With Google',
+                backgroundColor: AppColors.googleButton,
+                icon: AppIcon.icGoogle,
               ),
             ],
           ),

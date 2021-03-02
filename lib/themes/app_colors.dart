@@ -13,7 +13,10 @@ class AppColors {
   static final HexColor semantic2 = HexColor('#F43E3E');
   static final HexColor semantic3 = HexColor('#4B8EDD');
   static final HexColor white = HexColor('#FFFFFF');
-  static final HexColor black = HexColor('#000000');
+  static final HexColor black = HexColor('#000000'); //4460A0
+
+  static final HexColor facebookButton = HexColor('#4460A0');
+  static final HexColor googleButton = HexColor('#4285F4');
 }
 
 class HexColor extends Color {

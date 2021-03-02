@@ -44,24 +44,26 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
         appBar: AppBarWidget(
           title: 'Profile & Address',
         ),
-        body: Column(children: [
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(16),
-              width: double.infinity,
-              child: SingleChildScrollView(
-                child: _formProfileInfo(),
+        body: SafeArea(
+          child: Column(children: [
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(16),
+                width: double.infinity,
+                child: SingleChildScrollView(
+                  child: _formProfileInfo(),
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: PrimaryButtonWidget(
-              onPressed: _onSubmit,
-              title: 'save',
-            ),
-          )
-        ]),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: PrimaryButtonWidget(
+                onPressed: _onSubmit,
+                title: 'save',
+              ),
+            )
+          ]),
+        ),
       ),
     );
   }

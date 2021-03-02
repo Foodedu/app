@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/styles_text.dart';
 
-class GostButtonWidget extends StatelessWidget {
+class GhostButtonWidget extends StatelessWidget {
   final String title;
   final Function() onPressed;
   final Color color;
-  const GostButtonWidget({
+  const GhostButtonWidget({
     @required this.title,
     @required this.onPressed,
     this.color,
