@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/common/widgets/ghost_button_widget.dart';
+import 'package:food/modules/sign_up/sign_up_screen.dart';
 import 'package:food/themes/app_colors.dart';
 import 'package:food/themes/styles_text.dart';
+import 'package:get/get.dart';
 import '../../common/widgets/app_bar_widget.dart';
 import '../../data/repository/authen_repository.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
@@ -24,7 +26,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) => KeyboardDismisser(
           child: Scaffold(
         appBar: AppBarWidget(
-          title: 'Log in',
           isShowBack: true,
         ),
         body: SafeArea(
@@ -61,7 +62,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         GhostButtonWidget(
                           title: 'Sign up now!',
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(SignUpScreen());
+                          },
                         )
                       ],
                     ),

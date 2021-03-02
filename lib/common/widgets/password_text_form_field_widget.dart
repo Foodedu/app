@@ -31,7 +31,6 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
   PasswordTextFieldStatus status = PasswordTextFieldStatus.normal;
   Color _borderColor = AppColors.neutral4;
   Widget _suffixIcon = SizedBox();
-  Widget _errorMessageWidget = SizedBox();
   String _errorMessage = '';
   bool isHidePassword = true;
   bool _isChangeLabelColor = false;
@@ -89,7 +88,13 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
           SizedBox(
             height: 4,
           ),
-          _errorMessageWidget
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8),
+            child: Text(
+              _errorMessage ?? '',
+              style: TextStyle(color: AppColors.semantic2),
+            ),
+          )
         ],
       ),
     );
@@ -123,7 +128,6 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
                 updateTextFormFieldState(PasswordTextFieldStatus.showPassword);
               });
             });
-        _errorMessageWidget = SizedBox();
         break;
       case PasswordTextFieldStatus.showPassword:
         _borderColor = AppColors.neutral4;
@@ -138,7 +142,6 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
                 updateTextFormFieldState(PasswordTextFieldStatus.hidePassword);
               });
             });
-        _errorMessageWidget = SizedBox();
         break;
       case PasswordTextFieldStatus.invalid:
         _borderColor = AppColors.semantic2;
@@ -146,18 +149,10 @@ class _PasswordFormFieldWidgetState extends State<PasswordFormFieldWidget> {
           Icons.close,
           color: AppColors.semantic2,
         );
-        _errorMessageWidget = Padding(
-          padding: const EdgeInsets.only(left: 8.0, right: 8),
-          child: Text(
-            _errorMessage ?? '',
-            style: TextStyle(color: AppColors.semantic2),
-          ),
-        );
         break;
       default:
         _borderColor = AppColors.neutral4;
         _suffixIcon = SizedBox();
-        _errorMessageWidget = SizedBox();
     }
   }
 }

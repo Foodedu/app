@@ -109,7 +109,7 @@ class _LoginFormState extends State<LoginForm> {
                 height: 32,
               ),
               PrimaryButtonWidget(
-                title: 'Đăng nhập',
+                title: 'Sign In',
                 onPressed: _onSubmitted,
               ),
               SizedBox(
