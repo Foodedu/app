@@ -35,6 +35,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
       child: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
+        elevation: 0,
         title: Text(
           widget.title ?? '',
           style: StylesText.title2.copyWith(color: AppColors.neutral1),

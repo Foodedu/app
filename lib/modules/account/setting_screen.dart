@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food/common/widgets/app_bar_widget.dart';
+import 'package:food/modules/home/home_screen.dart';
 import 'package:get/get.dart';
 
 import '../../utils/pref.dart';
@@ -35,6 +36,12 @@ class _AccountScreenState extends State<AccountScreen> {
                 Get.to(() => ProfileInfoEditScreen());
               },
               child: Text('Profile & Address edit'),
+            ),
+            OutlineButton(
+              onPressed: () {
+                Get.to(() => HomeScreen());
+              },
+              child: Text('Home Screen'),
             ),
             OutlineButton(
               onPressed: () {
