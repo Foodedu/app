@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:food/themes/app_colors.dart';
+import 'package:food/themes/styles_text.dart';
+import 'package:food/utils/app_images.dart';
 import '../home/home_page.dart';
 import '../order/order_page.dart';
 import '../profile/profile_page.dart';
@@ -85,25 +89,44 @@ class _TabbarPageState extends State<TabbarPage> {
   Widget _buildTabBar() {
     return CupertinoTabBar(
       onTap: onTabTap,
+      backgroundColor: AppColors.white,
       items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Order',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
-          label: 'Saved',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
-        ),
+        _tabItem(title: 'Home', icon: AppIcon.icTabbarHome),
+        _tabItem(title: 'Order', icon: AppIcon.icTabbarOrder),
+        _tabItem(title: 'Saved', icon: AppIcon.icTabbarSaved),
+        _tabItem(title: 'Profile', icon: AppIcon.icTabbarProfile),
       ],
     );
+  }
+
+  BottomNavigationBarItem _tabItem(
+      {@required String title, @required String icon}) {
+    return BottomNavigationBarItem(
+        icon: SvgPicture.asset(icon),
+        activeIcon: Container(
+          padding: EdgeInsets.all(8),
+          margin: EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            color: AppColors.primary3,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                icon,
+                color: AppColors.primary1,
+              ),
+              Text(
+                title,
+                style: StylesText.caption.copyWith(
+                  color: AppColors.primary1,
+                ),
+              )
+            ],
+          ),
+        ));
   }
 
   void onTabTap(int index) {
