@@ -1,7 +1,7 @@
-class Browsing {
+class Order {
   String url;
   String name;
-  String address;
+  String description;
   num hour;
   num distance;
   num rating;

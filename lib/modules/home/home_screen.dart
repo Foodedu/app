@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:food/common/widgets/browsing_item_widget.dart';
 import 'package:food/common/widgets/category_widget.dart';
+import 'package:food/common/widgets/history_item_widget.dart';
+import 'package:food/common/widgets/order_item_widget.dart';
 import 'package:food/common/widgets/restaurant_item_widget.dart';
 import 'package:food/common/widgets/search_widget.dart';
 import 'package:food/utils/app_images.dart';
 import '../../models/browsing.dart';
+import '../../models/order.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -14,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _searchCtl = TextEditingController();
   var browsing = Browsing();
+  var order = Order();
 
   @override
   void initState() {
@@ -25,7 +29,21 @@ class _HomeScreenState extends State<HomeScreen> {
       ..hour = 5
       ..distance = 1.1
       ..rating = 5.0
-      ..discount = 20;
+      ..discount = 20
+      ..isPreviousOrder = true
+      ..cal = 475
+      ..price = 12.0;
+    order
+      ..url = 'https://placeimg.com/640/480/fashion'
+      ..name = 'aut et doloribus'
+      ..description = 'magnam molestiae molestiae'
+      ..hour = 5
+      ..distance = 1.1
+      ..rating = 5.0
+      ..discount = 20
+      ..isPreviousOrder = true
+      ..cal = 475
+      ..price = 12.0;
   }
 
   @override
@@ -68,7 +86,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   print('object');
                 },
-              )
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              OrderItemWidget(
+                order: order,
+                onPressed: () {
+                  print('object');
+                },
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              HistoryItemWidget(
+                order: order,
+                onPressed: () {
+                  print('object');
+                },
+                onPressedRating: () {
+                  print('rating');
+                },
+                onPressedReOrder: () {
+                  print('re-order');
+                },
+              ),
             ],
           ),
         ),

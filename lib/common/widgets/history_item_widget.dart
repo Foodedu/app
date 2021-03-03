@@ -1,45 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:food/common/widgets/secondary_button_widget.dart';
 import 'package:food/themes/app_colors.dart';
 import 'package:food/themes/styles_text.dart';
-import '../../models/browsing.dart';
+import '../../models/order.dart';
+import '../../themes/app_colors.dart';
 import 'image_network_widget.dart';
 
-class BrowsingItemWidget extends StatelessWidget {
-  final Browsing browsing;
+class HistoryItemWidget extends StatelessWidget {
+  final Order order;
   final Function onPressed;
+  final Function onPressedRating;
+  final Function onPressedReOrder;
 
-  const BrowsingItemWidget({
+  const HistoryItemWidget({
     Key key,
-    @required this.browsing,
+    @required this.order,
     @required this.onPressed,
+    @required this.onPressedRating,
+    @required this.onPressedReOrder,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
-      child: Stack(
-        children: [
-          Container(
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 2,
-                  blurRadius: 10,
-                  offset: Offset(0, 2),
-                ),
-              ],
+      child: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 10,
+              offset: Offset(0, 2),
             ),
-            child: IntrinsicHeight(
+          ],
+        ),
+        child: Column(
+          children: [
+            IntrinsicHeight(
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   NetworkImageWidget(
-                    url: browsing.url,
+                    url: order.url,
                   ),
                   SizedBox(
                     width: 16,
@@ -51,13 +57,13 @@ class BrowsingItemWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          browsing.name,
+                          order.name,
                           style:
                               StylesText.h1.copyWith(color: AppColors.neutral1),
                           maxLines: 1,
                         ),
                         Text(
-                          browsing.address,
+                          order.description,
                           style: StylesText.caption
                               .copyWith(color: AppColors.neutral3),
                           maxLines: 1,
@@ -70,7 +76,7 @@ class BrowsingItemWidget extends StatelessWidget {
                               color: AppColors.neutral1,
                             ),
                             Text(
-                              '${browsing.hour} mins',
+                              '${order.hour} mins',
                               style: StylesText.caption
                                   .copyWith(color: AppColors.neutral1),
                             ),
@@ -82,60 +88,55 @@ class BrowsingItemWidget extends StatelessWidget {
                               color: AppColors.neutral1,
                             ),
                             Text(
-                              '${browsing.distance} km',
+                              '${order.distance} km',
                               style: StylesText.caption
                                   .copyWith(color: AppColors.neutral1),
                             ),
                             SizedBox(
                               width: 8,
                             ),
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                            ),
+                            Expanded(child: Container()),
                             Text(
-                              '${browsing.rating}',
-                              style: StylesText.caption
-                                  .copyWith(color: AppColors.neutral1),
-                            )
+                              '\$${order.price}',
+                              style: StylesText.body1.copyWith(
+                                color: AppColors.neutral1,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 1,
+                            ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   )
                 ],
               ),
             ),
-          ),
-          Positioned(
-            child: discount(browsing.discount),
-          )
-        ],
+            Container(
+              padding: EdgeInsets.only(top: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SecondaryButtonWidget(
+                    title: 'Rate',
+                    onPressed: onPressedRating,
+                    size: 120,
+                    color: AppColors.neutral2,
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  SecondaryButtonWidget(
+                    title: 'Re-Order',
+                    onPressed: onPressedReOrder,
+                    size: 120,
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
-  }
-
-  Widget discount(num discount) {
-    if (discount <= 0) {
-      return Container();
-    } else {
-      return Container(
-        width: 56,
-        height: 25,
-        decoration: BoxDecoration(
-          color: AppColors.semantic1,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(8),
-            bottomRight: Radius.circular(8),
-          ),
-        ),
-        child: Center(
-          child: Text(
-            '$discount %',
-            style: StylesText.body2.copyWith(color: AppColors.white),
-          ),
-        ),
-      );
-    }
   }
 }

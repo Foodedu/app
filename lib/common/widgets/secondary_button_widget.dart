@@ -7,10 +7,12 @@ class SecondaryButtonWidget extends StatelessWidget {
   final String title;
   final double size;
   final Function() onPressed;
+  final Color color;
   const SecondaryButtonWidget({
     @required this.title,
     @required this.onPressed,
     this.size = double.infinity,
+    this.color,
   });
   @override
   Widget build(BuildContext context) {
@@ -22,13 +24,13 @@ class SecondaryButtonWidget extends StatelessWidget {
         color: AppColors.primary1,
         child: Text(
           title.toUpperCase(),
-          style: StylesText.h2.copyWith(color: AppColors.primary1),
+          style: StylesText.h2.copyWith(color: color ?? AppColors.primary1),
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         borderSide: BorderSide(
-          color: AppColors.primary1,
+          color: color ?? AppColors.primary1,
           width: 1,
           style: BorderStyle.solid,
         ),

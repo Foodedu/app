@@ -52,7 +52,7 @@ class RestaurantItemWidget extends StatelessWidget {
                     EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
                 child: Text(
                   browsing.name,
-                  style: StylesText.h2.copyWith(color: AppColors.neutral1),
+                  style: StylesText.h1.copyWith(color: AppColors.neutral1),
                   maxLines: 1,
                 ),
               ),
