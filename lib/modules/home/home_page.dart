@@ -12,12 +12,14 @@ import 'package:food/utils/app_images.dart';
 import '../../models/browsing.dart';
 import '../../models/order.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({Key key}) : super(key: key);
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   final _searchCtl = TextEditingController();
   var browsing = Browsing();
   var order = Order();
