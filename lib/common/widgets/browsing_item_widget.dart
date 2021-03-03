@@ -29,7 +29,7 @@ class BrowsingItemWidget extends StatelessWidget {
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
-                  blurRadius: 10,
+                  blurRadius: 7,
                   offset: Offset(0, 2),
                 ),
               ],
