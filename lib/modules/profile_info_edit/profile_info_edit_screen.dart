@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:food/common/widgets/dropdown_widget.dart';
-import 'package:food/modules/profile_info_edit/widgets/avatar_profile_widget.dart';
-import 'package:food/utils/helpers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 import '../../common/widgets/app_bar_widget.dart';
+import '../../common/widgets/dropdown_widget.dart';
 import '../../common/widgets/primary_button_widget.dart';
 import '../../common/widgets/text_form_field_widget.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/styles_text.dart';
+import '../../utils/helpers.dart';
 import '../../utils/validators.dart';
+import 'widgets/avatar_profile_widget.dart';
 
 class ProfileInfoEditScreen extends StatefulWidget {
   @override

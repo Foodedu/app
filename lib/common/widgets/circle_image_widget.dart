@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:food/utils/app_images.dart';
+
+import '../../utils/app_images.dart';
 
 class CircleImageWidget extends StatelessWidget {
   final bool isServerFile;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/common/widgets/app_bar_widget.dart';
-import 'package:food/modules/home/home_page.dart';
 import 'package:get/get.dart';
 
+import '../../common/widgets/app_bar_widget.dart';
 import '../../utils/pref.dart';
 import '../authentication/bloc/authentication_bloc.dart';
+import '../home/home_page.dart';
 import '../profile_info_edit/profile_info_edit_screen.dart';
 
 class AccountScreen extends StatefulWidget {

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:food/common/widgets/browsing_item_widget.dart';
-import 'package:food/common/widgets/category_widget.dart';
-import 'package:food/common/widgets/dash_line_widget.dart';
-import 'package:food/common/widgets/history_item_widget.dart';
-import 'package:food/common/widgets/order_item_widget.dart';
-import 'package:food/common/widgets/restaurant_item_widget.dart';
-import 'package:food/common/widgets/search_widget.dart';
-import 'package:food/common/widgets/ticket_widget.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/utils/app_images.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../common/widgets/browsing_item_widget.dart';
+import '../../common/widgets/category_widget.dart';
+import '../../common/widgets/dash_line_widget.dart';
+import '../../common/widgets/history_item_widget.dart';
+import '../../common/widgets/order_item_widget.dart';
+import '../../common/widgets/restaurant_item_widget.dart';
+import '../../common/widgets/search_widget.dart';
+import '../../common/widgets/ticket_widget.dart';
+import '../authentication/bloc/authentication_bloc.dart';
+import '../../themes/app_colors.dart';
+import '../../utils/app_images.dart';
+import '../../utils/pref.dart';
 import '../../models/browsing.dart';
 import '../../models/order.dart';
 
@@ -23,6 +26,7 @@ class _HomePageState extends State<HomePage> {
   final _searchCtl = TextEditingController();
   var browsing = Browsing();
   var order = Order();
+  var pref = LocalPref();
 
   @override
   void initState() {
@@ -66,6 +70,12 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
+                OutlineButton(
+                  onPressed: () {
+                    _clickSignOut();
+                  },
+                  child: Text('Log Out'),
+                ),
                 SizedBox(
                   height: 16,
                 ),
@@ -152,5 +162,11 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void _clickSignOut() async {
+    BlocProvider.of<AuthenticationBloc>(context)
+        .add(AuthenticationLogoutRequested());
+    await pref.saveBool(PrefKey.isLogged, false);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
+
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
 
 class DropdownWidget extends StatefulWidget {
   final List<String> items;

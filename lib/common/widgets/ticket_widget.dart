@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food/common/widgets/dash_line_widget.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
+
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
+import 'dash_line_widget.dart';
 
 class TicketWidget extends StatefulWidget {
   final double width;

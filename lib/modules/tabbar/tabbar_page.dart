@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food/modules/home/home_page.dart';
-import 'package:food/modules/order/order_page.dart';
-import 'package:food/modules/profile/profile_page.dart';
-import 'package:food/modules/saved/saved_page.dart';
-import 'package:food/routes/routes.dart';
+import '../home/home_page.dart';
+import '../order/order_page.dart';
+import '../profile/profile_page.dart';
+import '../saved/saved_page.dart';
+import '../../routes/routes.dart';
 
-class TabbarScreen extends StatefulWidget {
+class TabbarPage extends StatefulWidget {
   static final GlobalKey<NavigatorState> homeKey =
       GlobalKey(debugLabel: 'homeNavigatorKey');
   static final GlobalKey<NavigatorState> orderKey =
@@ -17,14 +17,14 @@ class TabbarScreen extends StatefulWidget {
       GlobalKey(debugLabel: 'profileNavigatorKey');
 
   @override
-  _TabbarScreenState createState() => _TabbarScreenState();
+  _TabbarPageState createState() => _TabbarPageState();
 }
 
-class _TabbarScreenState extends State<TabbarScreen> {
-  GlobalKey<NavigatorState> get homeKey => TabbarScreen.homeKey;
-  GlobalKey<NavigatorState> get orderKey => TabbarScreen.orderKey;
-  GlobalKey<NavigatorState> get savedKey => TabbarScreen.savedKey;
-  GlobalKey<NavigatorState> get profileKey => TabbarScreen.profileKey;
+class _TabbarPageState extends State<TabbarPage> {
+  GlobalKey<NavigatorState> get homeKey => TabbarPage.homeKey;
+  GlobalKey<NavigatorState> get orderKey => TabbarPage.orderKey;
+  GlobalKey<NavigatorState> get savedKey => TabbarPage.savedKey;
+  GlobalKey<NavigatorState> get profileKey => TabbarPage.profileKey;
 
   int oldTab = 0;
   CupertinoTabController _tabController;
@@ -52,7 +52,7 @@ class _TabbarScreenState extends State<TabbarScreen> {
         builder: (BuildContext context) {
           return const SavedPage();
         },
-        navigatorKey: orderKey,
+        navigatorKey: savedKey,
       ),
       CupertinoTabView(
         builder: (BuildContext context) {

@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food/common/widgets/ghost_button_widget.dart';
-import 'package:food/common/widgets/social_button_widget.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
-import 'package:food/utils/app_images.dart';
-import 'package:food/utils/helpers.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 import '../../common/widgets/password_text_form_field_widget.dart';
 import '../../common/widgets/primary_button_widget.dart';
 import '../../common/widgets/text_form_field_widget.dart';
+import '../../utils/helpers.dart';
 import '../../utils/validators.dart';
 
 class SignUpForm extends StatefulWidget {

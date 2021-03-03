@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/common/widgets/ghost_button_widget.dart';
-import 'package:food/modules/sign_up/sign_up_form.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
-import '../../common/widgets/app_bar_widget.dart';
-import '../../data/repository/authen_repository.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+
+import '../../common/widgets/app_bar_widget.dart';
+import '../../common/widgets/ghost_button_widget.dart';
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
+import 'sign_up_form.dart';
 
 class SignUpScreen extends StatefulWidget {
   static Route route() {

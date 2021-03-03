@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food/modules/login/login_screen.dart';
-import 'package:food/modules/welcome/welcom_page.dart';
 
+import '../modules/login/login_page.dart';
+import '../modules/tabbar/tabbar_page.dart';
+import '../modules/welcome/welcom_page.dart';
 import 'route_name.dart';
 
 class Routes {
@@ -18,7 +19,9 @@ class Routes {
         }
         return buildRoute(settings, const WelcomePage());
       case RouteName.loginPage:
-        return buildRoute(settings, LoginScreen());
+        return buildRoute(settings, LoginPage());
+      case RouteName.tabbarPage:
+        return buildRoute(settings, TabbarPage());
       default:
         return _errorRoute();
     }
@@ -35,6 +38,18 @@ class Routes {
           child: Text('Page not found'),
         ),
       );
+    });
+  }
+
+  static Route tabbarRoute() {
+    return MaterialPageRoute(builder: (_) {
+      return TabbarPage();
+    });
+  }
+
+  static Route loginRoute() {
+    return MaterialPageRoute(builder: (_) {
+      return LoginPage();
     });
   }
 

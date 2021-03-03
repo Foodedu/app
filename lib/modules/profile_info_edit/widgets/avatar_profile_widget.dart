@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food/common/widgets/utils.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/utils/app_images.dart';
+import '../../../common/widgets/utils.dart';
+import '../../../themes/app_colors.dart';
+import '../../../utils/app_images.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 

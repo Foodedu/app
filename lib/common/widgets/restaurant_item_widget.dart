@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
+
 import '../../models/browsing.dart';
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
 import 'image_network_widget.dart';
 
 class RestaurantItemWidget extends StatelessWidget {

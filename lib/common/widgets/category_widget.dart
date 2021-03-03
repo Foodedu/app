@@ -1,8 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
+
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
 
 class CategoryWidget extends StatelessWidget {
   final String icon;

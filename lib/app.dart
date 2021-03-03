@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 import 'data/repository/authen_repository.dart';
-import 'modules/account/setting_screen.dart';
 import 'modules/authentication/bloc/authentication_bloc.dart';
-import 'modules/login/login_screen.dart';
-import 'modules/splash/splash.dart';
+import 'routes/routes.dart';
 import 'themes/themes.dart';
 import 'utils/pref.dart';
 
@@ -50,10 +48,10 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Imag',
+      title: 'Food Delivery',
       debugShowCheckedModeBanner: false,
       navigatorKey: _navigatorKey,
-      onGenerateRoute: (_) => DefaultPage.route(),
+      onGenerateRoute: Routes.buildRoutes,
       theme: AppTheme.lightTheme,
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(
@@ -61,13 +59,13 @@ class _AppViewState extends State<AppView> {
             switch (state.status) {
               case AuthenticationStatus.authenticated:
                 _navigator.pushAndRemoveUntil<void>(
-                  AccountScreen.route(),
+                  Routes.tabbarRoute(),
                   (route) => false,
                 );
                 break;
               case AuthenticationStatus.unauthenticated:
                 _navigator.pushAndRemoveUntil<void>(
-                  LoginScreen.route(),
+                  Routes.loginRoute(),
                   (route) => false,
                 );
                 break;

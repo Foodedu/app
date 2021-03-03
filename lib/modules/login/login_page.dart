@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/common/widgets/ghost_button_widget.dart';
-import 'package:food/modules/sign_up/sign_up_screen.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
 import 'package:get/get.dart';
-import '../../common/widgets/app_bar_widget.dart';
-import '../../data/repository/authen_repository.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
+import '../../common/widgets/app_bar_widget.dart';
+import '../../common/widgets/ghost_button_widget.dart';
+import '../../data/repository/authen_repository.dart';
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
+import '../sign_up/sign_up_screen.dart';
 import 'bloc/login_bloc.dart';
 import 'login_form.dart';
 
-class LoginScreen extends StatefulWidget {
-  static Route route() {
-    return MaterialPageRoute<void>(builder: (_) => LoginScreen());
-  }
-
+class LoginPage extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) => KeyboardDismisser(
           child: Scaffold(
