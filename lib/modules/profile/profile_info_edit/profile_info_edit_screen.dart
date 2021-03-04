@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food/common/widgets/ghost_button_widget.dart';
 import '../../../common/widgets/app_bar_widget.dart';
 import '../../../common/widgets/dropdown_widget.dart';
 import '../../../common/widgets/primary_button_widget.dart';
@@ -7,6 +8,7 @@ import '../../../themes/app_colors.dart';
 import '../../../themes/styles_text.dart';
 import '../../../utils/helpers.dart';
 import '../../../utils/validators.dart';
+import '../../../models/address.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 import 'widgets/avatar_profile_widget.dart';
@@ -26,6 +28,18 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
   final _lastNameFocus = FocusNode();
   final _emailFocus = FocusNode();
   final _phoneFocus = FocusNode();
+  final _listAddress = <Address>[];
+
+  @override
+  void initState() {
+    super.initState();
+    for (var i = 0; i < 5; i++) {
+      var address = Address()
+        ..name = 'Address $i'
+        ..fullAddress = '716 Crooks Mount New Lucileburgh';
+      _listAddress.add(address);
+    }
+  }
 
   @override
   void dispose() {
@@ -44,14 +58,44 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
         appBar: AppBarWidget(
           title: 'Profile & Address',
         ),
-        body: SafeArea(
-          child: Column(children: [
+        body: Column(
+          children: [
             Expanded(
-              child: Container(
-                padding: EdgeInsets.all(16),
-                width: double.infinity,
-                child: SingleChildScrollView(
-                  child: _formProfileInfo(),
+              child: SingleChildScrollView(
+                child: SafeArea(
+                  child: Column(children: [
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        child: _formProfileInfo(),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 16, right: 16, bottom: 8),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Address',
+                              style: StylesText.title1
+                                  .copyWith(color: AppColors.neutral1),
+                            ),
+                          ),
+                          GhostButtonWidget(
+                            title: 'Add more',
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                        width: double.infinity,
+                        height: 0.35,
+                        color: AppColors.neutral4),
+                    listAddress(),
+                  ]),
                 ),
               ),
             ),
@@ -62,7 +106,7 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
                 title: 'save',
               ),
             )
-          ]),
+          ],
         ),
       ),
     );
@@ -71,6 +115,27 @@ class _ProfileInfoEditScreenState extends State<ProfileInfoEditScreen> {
   void _onSubmit() {
     Helpers.hideKeyboard(context);
     _formKey.currentState.validate();
+  }
+
+  Widget listAddress() {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: _listAddress.length,
+      physics: NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        var address = _listAddress[index];
+        return ListTile(
+          title: Text(
+            '${address.name ?? ''}',
+            style: StylesText.body1,
+          ),
+          subtitle: Text(
+            '${address.fullAddress ?? ''}',
+            style: StylesText.caption,
+          ),
+        );
+      },
+    );
   }
 
   Widget _formProfileInfo() {

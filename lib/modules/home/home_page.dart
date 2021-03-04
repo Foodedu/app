@@ -7,7 +7,6 @@ import '../../common/widgets/history_item_widget.dart';
 import '../../common/widgets/order_item_widget.dart';
 import '../../common/widgets/restaurant_item_widget.dart';
 import '../../common/widgets/search_widget.dart';
-import '../../common/widgets/ticket_widget.dart';
 import '../../models/browsing.dart';
 import '../../models/order.dart';
 import '../../utils/app_images.dart';
