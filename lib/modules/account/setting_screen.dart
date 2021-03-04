@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food/modules/profile/profile_info_edit/profile_info_edit_screen.dart';
+import '../profile/profile_info_edit/profile_info_edit_screen.dart';
 import 'package:get/get.dart';
 
 import '../../common/widgets/app_bar_widget.dart';

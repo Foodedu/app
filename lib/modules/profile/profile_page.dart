@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food/common/widgets/circle_image_widget.dart';
-import 'package:food/common/widgets/listtile_widget.dart';
-import 'package:food/modules/authentication/bloc/authentication_bloc.dart';
-import 'package:food/modules/profile/profile_info_edit/profile_info_edit_screen.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
-import 'package:food/utils/pref.dart';
+import '../../common/widgets/circle_image_widget.dart';
+import '../../common/widgets/listtile_widget.dart';
+import '../authentication/bloc/authentication_bloc.dart';
+import '../payment/payment_method_page.dart';
+import 'profile_info_edit/profile_info_edit_screen.dart';
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
+import '../../utils/pref.dart';
 import 'package:get/get.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -43,7 +44,9 @@ class _ProfilePageState extends State<ProfilePage> {
               ListTileWidget(
                 title: 'Payment methods',
                 icon: Icons.payment,
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => PaymentMethodPage());
+                },
               ),
               SizedBox(
                 height: 2,

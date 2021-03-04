@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../common/widgets/browsing_item_widget.dart';
 import '../../common/widgets/category_widget.dart';
-import '../../common/widgets/dash_line_widget.dart';
 import '../../common/widgets/history_item_widget.dart';
 import '../../common/widgets/order_item_widget.dart';
 import '../../common/widgets/restaurant_item_widget.dart';
 import '../../common/widgets/search_widget.dart';
 import '../../common/widgets/ticket_widget.dart';
-import '../authentication/bloc/authentication_bloc.dart';
-import '../../themes/app_colors.dart';
-import '../../utils/app_images.dart';
-import '../../utils/pref.dart';
 import '../../models/browsing.dart';
 import '../../models/order.dart';
+import '../../utils/app_images.dart';
+import '../../utils/pref.dart';
+import '../authentication/bloc/authentication_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);

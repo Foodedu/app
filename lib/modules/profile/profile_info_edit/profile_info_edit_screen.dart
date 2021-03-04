@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:food/common/widgets/app_bar_widget.dart';
-import 'package:food/common/widgets/dropdown_widget.dart';
-import 'package:food/common/widgets/primary_button_widget.dart';
-import 'package:food/common/widgets/text_form_field_widget.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
-import 'package:food/utils/helpers.dart';
-import 'package:food/utils/validators.dart';
+import '../../../common/widgets/app_bar_widget.dart';
+import '../../../common/widgets/dropdown_widget.dart';
+import '../../../common/widgets/primary_button_widget.dart';
+import '../../../common/widgets/text_form_field_widget.dart';
+import '../../../themes/app_colors.dart';
+import '../../../themes/styles_text.dart';
+import '../../../utils/helpers.dart';
+import '../../../utils/validators.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
 import 'widgets/avatar_profile_widget.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food/themes/app_colors.dart';
-import 'package:food/themes/styles_text.dart';
-import 'package:food/utils/app_images.dart';
+import '../../themes/app_colors.dart';
+import '../../themes/styles_text.dart';
+import '../../utils/app_images.dart';
 import '../home/home_page.dart';
 import '../order/order_page.dart';
 import '../profile/profile_page.dart';
