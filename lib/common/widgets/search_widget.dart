@@ -19,6 +19,10 @@ class SearchWidget extends StatelessWidget {
         primaryColor: AppColors.neutral4,
         inputDecorationTheme: InputDecorationTheme(
           labelStyle: TextStyle(color: AppColors.neutral4),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(width: 0.35),
+          ),
         ),
       ),
       child: Container(

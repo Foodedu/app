@@ -40,7 +40,7 @@ class CategoryWidget extends StatelessWidget {
           ),
           AutoSizeText(
             label,
-            style: StylesText.body2,
+            style: StylesText.body2.copyWith(color: AppColors.neutral2),
             maxLines: 1,
             textAlign: TextAlign.center,
           ),

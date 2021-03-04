@@ -12,4 +12,5 @@ class AppIcon {
   static const icTabbarOrder = baseAssets + 'ic_tabbar_order.svg';
   static const icTabbarSaved = baseAssets + 'ic_tabbar_saved.svg';
   static const icTabbarProfile = baseAssets + 'ic_tabbar_profile.svg';
+  static const icCategoryMeal = baseAssets + 'ic_category_meal.svg';
 }
