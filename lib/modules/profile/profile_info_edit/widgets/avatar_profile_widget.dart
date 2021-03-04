@@ -2,13 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../common/widgets/utils.dart';
-import '../../../themes/app_colors.dart';
-import '../../../utils/app_images.dart';
+import 'package:food/common/widgets/circle_image_widget.dart';
+import 'package:food/common/widgets/utils.dart';
+import 'package:food/themes/app_colors.dart';
+import 'package:food/utils/app_images.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../../common/widgets/circle_image_widget.dart';
 
 class AvatarProfileWidget extends StatefulWidget {
   @override

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food/modules/profile/profile_info_edit/profile_info_edit_screen.dart';
 import 'package:get/get.dart';
 
 import '../../common/widgets/app_bar_widget.dart';
 import '../../utils/pref.dart';
-import '../authentication/bloc/authentication_bloc.dart';
 import '../home/home_page.dart';
-import '../profile_info_edit/profile_info_edit_screen.dart';
 
 class AccountScreen extends StatefulWidget {
   static Route route() {
@@ -43,21 +41,9 @@ class _AccountScreenState extends State<AccountScreen> {
               },
               child: Text('Home Screen'),
             ),
-            OutlineButton(
-              onPressed: () {
-                _clickSignOut();
-              },
-              child: Text('Log Out'),
-            ),
           ],
         ),
       ),
     );
-  }
-
-  void _clickSignOut() async {
-    BlocProvider.of<AuthenticationBloc>(context)
-        .add(AuthenticationLogoutRequested());
-    await pref.saveBool(PrefKey.isLogged, false);
   }
 }
