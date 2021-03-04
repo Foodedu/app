@@ -215,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 8,
           ),
           Text(
-            'Jackeline Schulist',
+            'Đại Võ',
             style: StylesText.h1.copyWith(
               color: AppColors.neutral1,
             ),
@@ -224,7 +224,7 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 8,
           ),
           Text(
-            '721-877-8629',
+            'daivph@gmail.com',
             style: StylesText.body1.copyWith(
               color: AppColors.neutral1,
             ),
