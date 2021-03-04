@@ -29,6 +29,7 @@ dependencies:
   auto_size_text: ^2.1.0
   flutter_credit_card: ^0.1.4
   intl: ^0.17.0-nullsafety.2
+  carousel_slider: ^3.0.0
 
   cupertino_icons: ^1.0.1
 

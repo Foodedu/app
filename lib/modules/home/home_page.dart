@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food/common/widgets/image_network_widget.dart';
+import 'package:food/common/widgets/slide_image_widget.dart';
+import 'package:food/themes/app_colors.dart';
+import 'package:food/themes/styles_text.dart';
 
-import '../../common/widgets/browsing_item_widget.dart';
-import '../../common/widgets/category_widget.dart';
-import '../../common/widgets/history_item_widget.dart';
-import '../../common/widgets/order_item_widget.dart';
-import '../../common/widgets/restaurant_item_widget.dart';
 import '../../common/widgets/search_widget.dart';
 import '../../models/browsing.dart';
 import '../../models/order.dart';
-import '../../utils/app_images.dart';
 import '../../utils/pref.dart';
-import '../authentication/bloc/authentication_bloc.dart';
+import '../../models/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -24,11 +21,23 @@ class _HomePageState extends State<HomePage> {
   final _searchCtl = TextEditingController();
   var browsing = Browsing();
   var order = Order();
+  var _profile = Profile();
   var pref = LocalPref();
+  var imgList = <String>[];
 
   @override
   void initState() {
     super.initState();
+    imgList = [
+      'https://placeimg.com/640/480/animals',
+      'https://placeimg.com/640/480/food',
+      'https://placeimg.com/640/480/city'
+    ];
+    _profile = Profile()
+      ..avatar = 'https://placeimg.com/640/480/food'
+      ..email = 'daivph@gmail.com'
+      ..phone = '0123456789'
+      ..fullname = 'Đại Võ';
     browsing
       ..url = 'https://placeimg.com/640/480/food'
       ..name = 'aut et doloribus'
@@ -68,68 +77,19 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                OutlineButton(
-                  onPressed: () {
-                    _clickSignOut();
-                  },
-                  child: Text('Log Out'),
-                ),
-                SizedBox(
-                  height: 16,
-                ),
+                headerHome(_profile),
                 SearchWidget(
                   controller: _searchCtl,
-                  hint: 'test',
-                  onChanged: (value) {
-                    print(value);
-                  },
+                  hint: 'Search for restaurants, dishes ...',
+                  onChanged: (value) {},
                 ),
-                CategoryWidget(
-                  icon: AppIcon.icFacebook,
-                  label: 'Drinks ',
-                  onPressed: () {},
-                ),
-                BrowsingItemWidget(
-                  browsing: browsing,
-                  onPressed: () {
-                    print('object');
-                  },
-                ),
-                SizedBox(
-                  height: 16,
-                ),
-                RestaurantItemWidget(
-                  browsing: browsing,
-                  onPressed: () {
-                    print('object');
-                  },
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                OrderItemWidget(
-                  order: order,
-                  onPressed: () {
-                    print('object');
-                  },
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                HistoryItemWidget(
-                  order: order,
-                  onPressed: () {
-                    print('object');
-                  },
-                  onPressedRating: () {
-                    print('rating');
-                  },
-                  onPressedReOrder: () {
-                    print('re-order');
-                  },
-                ),
-                SizedBox(
-                  height: 8,
+                Container(
+                  height: 130,
+                  padding: EdgeInsets.all(8),
+                  child: SlideImageWidget(
+                    imgList: imgList,
+                    height: 100,
+                  ),
                 ),
               ],
             ),
@@ -139,9 +99,51 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _clickSignOut() async {
-    BlocProvider.of<AuthenticationBloc>(context)
-        .add(AuthenticationLogoutRequested());
-    await pref.saveBool(PrefKey.isLogged, false);
+  Widget headerHome(Profile profile) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: RichText(
+                  text: TextSpan(
+                      text: 'Hello, ',
+                      style: StylesText.h1.copyWith(
+                        color: AppColors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: '${profile.fullname ?? ''}!',
+                          style: StylesText.h1.copyWith(
+                            color: AppColors.primary1,
+                          ),
+                        )
+                      ]),
+                ),
+              ),
+              NetworkImageWidget(
+                url: profile.avatar,
+                width: 50,
+                height: 50,
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                '421 Rashad Cape, Port Kristopherview',
+                style: StylesText.caption.copyWith(color: AppColors.neutral3),
+              ),
+              Icon(
+                Icons.arrow_drop_down,
+                color: AppColors.primary1,
+              )
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

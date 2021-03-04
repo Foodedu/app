@@ -25,6 +25,7 @@ class SearchWidget extends StatelessWidget {
         child: TextField(
           controller: controller,
           decoration: InputDecoration(
+            contentPadding: EdgeInsets.all(2),
             hintText: hint,
             hintStyle: StylesText.body2.copyWith(
               color: AppColors.neutral3,
@@ -38,6 +39,7 @@ class SearchWidget extends StatelessWidget {
             ),
           ),
           onChanged: onChanged,
+          maxLines: 1,
         ),
       ),
     );
