@@ -78,29 +78,6 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 16,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 10,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: TicketWidget(
-                    child: Text('sdfsdfd'),
-                    width: 350,
-                    height: 100,
-                    color: Colors.white,
-                    isCornerRounded: true,
-                  ),
-                ),
-                SizedBox(
-                  height: 16,
-                ),
                 SearchWidget(
                   controller: _searchCtl,
                   hint: 'test',

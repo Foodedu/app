@@ -3,80 +3,82 @@ import 'package:flutter/material.dart';
 import '../../themes/app_colors.dart';
 import '../../themes/styles_text.dart';
 import 'dash_line_widget.dart';
+import '../../models/voucher.dart';
+import '../../utils/formatter.dart';
 
-class TicketWidget extends StatefulWidget {
-  final double width;
+class TicketWidget extends StatelessWidget {
+  final Voucher voucher;
   final double height;
-  final Widget child;
-  final Color color;
-  final bool isCornerRounded;
+  final Function onTap;
 
-  TicketWidget(
-      {@required this.width,
-      @required this.height,
-      @required this.child,
-      this.color = Colors.white,
-      this.isCornerRounded = false});
-
-  @override
-  _TicketWidgetState createState() => _TicketWidgetState();
-}
-
-class _TicketWidgetState extends State<TicketWidget> {
+  const TicketWidget({
+    this.height = 100.0,
+    @required this.voucher,
+    @required this.onTap,
+  });
   @override
   Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: TicketClipper(),
-      child: AnimatedContainer(
-        duration: Duration(seconds: 1),
-        width: widget.width,
-        height: widget.height,
-        child: Row(
-          children: [
-            Expanded(
-              child: firstWidget(),
-            ),
-            DashLineWidget(
-              width: 10,
-              height: widget.height,
-              color: Colors.black,
-            ),
-            Container(
-              padding: EdgeInsets.all(8),
-              width: 80,
-              height: widget.height,
-              decoration: BoxDecoration(
-                color: widget.color,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(8),
-                  bottomRight: Radius.circular(8),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 10,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: ClipPath(
+        clipper: TicketClipper(),
+        child: AnimatedContainer(
+          duration: Duration(seconds: 1),
+          height: height,
+          child: Row(
+            children: [
+              Expanded(
+                child: firstWidget(),
+              ),
+              DashLineWidget(
+                width: 10,
+                height: height,
+                color: Colors.black,
+              ),
+              Container(
+                padding: EdgeInsets.all(8),
+                width: 80,
+                height: height,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(8),
+                    bottomRight: Radius.circular(8),
+                  ),
                 ),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'Exp.',
-                    style: StylesText.h1.copyWith(color: AppColors.semantic2),
-                  ),
-                  Expanded(child: Container()),
-                  Text(
-                    '07',
-                    style: StylesText.h1.copyWith(color: AppColors.neutral1),
-                  ),
-                  Text(
-                    'DEC',
-                    style: StylesText.h1.copyWith(color: AppColors.neutral1),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-        decoration: BoxDecoration(
-          color: widget.color,
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(8),
-            bottomRight: Radius.circular(8),
+                child: Column(
+                  children: [
+                    Text(
+                      'Exp.',
+                      style: StylesText.h1.copyWith(color: AppColors.primary1),
+                    ),
+                    Expanded(child: Container()),
+                    Text(
+                      '${voucher.expiredTime.formatDDMM()}',
+                      style: StylesText.h1.copyWith(color: AppColors.neutral1),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(8),
+              bottomRight: Radius.circular(8),
+            ),
           ),
         ),
       ),
@@ -95,7 +97,11 @@ class _TicketWidgetState extends State<TicketWidget> {
               color: AppColors.neutral2,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Center(child: Text('50%')),
+            child: Center(
+                child: Text(
+              '${voucher.percent ?? '0'}%',
+              style: StylesText.h1.copyWith(color: AppColors.white),
+            )),
           ),
           SizedBox(
             width: 8,
@@ -103,10 +109,10 @@ class _TicketWidgetState extends State<TicketWidget> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Black fries day'),
-              Text('All black fries'),
+              Text('${voucher.title ?? ''}'),
+              Text('${voucher.description ?? ''}'),
               Expanded(child: Container()),
-              Text('BLFD 30'),
+              Text('${voucher.code ?? ''}'),
             ],
           ),
         ],

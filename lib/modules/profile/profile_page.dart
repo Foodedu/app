@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food/modules/voucher/voucher_page.dart';
 import '../../common/widgets/circle_image_widget.dart';
 import '../../common/widgets/listtile_widget.dart';
 import '../authentication/bloc/authentication_bloc.dart';
@@ -36,7 +37,9 @@ class _ProfilePageState extends State<ProfilePage> {
               ListTileWidget(
                 title: 'Voucher',
                 icon: Icons.local_offer_sharp,
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => VoucherPage());
+                },
               ),
               SizedBox(
                 height: 2,
